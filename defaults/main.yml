@@ -1,0 +1,5 @@
+---
+osquery_exporter:
+  checksum:
+    algorithm: "sha512"
+    binary: "f872e14186499051a229d57a8c95f16feeccc9177e098fd9320ce51428e5bbf80f3da1270a9b86c5eeb311037ef57bc47b2544ef0078b87f0bee2047962c72aa"

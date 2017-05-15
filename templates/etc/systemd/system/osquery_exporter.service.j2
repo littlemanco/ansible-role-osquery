@@ -1,0 +1,13 @@
+[Unit]
+Description=The prometheus OSQuery exporter
+Documentation=https://github.com/littlemanco/ansible-role-osquery
+Documentation=https://github.com/zwopir/osquery_exporter
+
+[Service]
+# Start the service, bound to localhost. It will be exposed by another service, such as NGINX or stunnel.
+ExecStart=/usr/local/bin/osquery_exporter \
+    -web.listen-address=127.0.0.1:9232 \
+    -config.file=/etc/osquery_exporter/config.yml
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+---
+- name: "Check whether the node exporter has already been installed"
+  stat:
+    path: "/usr/local/bin/osquery_exporter"
+    checksum_algorithm: "{{ osquery_exporter.checksum.algorithm }}"
+  register: "bin"
+
+- name: "Move node-exporter to the /usr/local/bin/node-exporter"
+  copy:
+    src: "{{ lookup('env', GOPATH) }}/osquery_exporter"
+    dest: "/usr/local/bin/osquery_exporter"
+    owner: "root"
+    group: "root"
+    mode: "u=rwx,g=rwx,o=rwx"
+  when: bin.stat.exists == False or
+        bin.stat.checksum != "{{ osquery_exporter.checksum.binary }}"
+  notify: "restart osquery_exporter"

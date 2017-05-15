@@ -1,0 +1,7 @@
+---
+- name: "restart osquery_exporter"
+  systemd:
+    state: "restarted"
+    name: "osquery_exporter"
+    enabled: "yes"
+    daemon_reload: "yes"
