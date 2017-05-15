@@ -1,4 +1,20 @@
 ---
+- name: "Create the config path"
+  file:
+    path: "/etc/osquery_exporter"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "u=rx,g=rx,o=rwx"
+
+- name: "Create the systemd service"
+  template:
+    src: "etc/osquery_exporter/config.yml.j2"
+    dest: "/etc/osquery_exporter/config.yml"
+    owner: "root"
+    mode: "u=rwx,g=r,o=r"
+  notify: "restart osquery_exporter"
+
 - name: "Check whether the node exporter has already been installed"
   stat:
     path: "/usr/local/bin/osquery_exporter"
