@@ -5,14 +5,14 @@
     state: "directory"
     owner: "root"
     group: "root"
-    mode: "u=rx,g=rx,o=rwx"
+    mode: "u=rx,g=rx,o=rx"
 
 - name: "Create the systemd service"
   template:
     src: "etc/osquery_exporter/config.yml.j2"
     dest: "/etc/osquery_exporter/config.yml"
     owner: "root"
-    mode: "u=rwx,g=r,o=r"
+    mode: "u=r,g=r,o=r"
   notify: "restart osquery_exporter"
 
 - name: "Check whether the node exporter has already been installed"
