@@ -7,7 +7,7 @@
 
 - name: "Move node-exporter to the /usr/local/bin/node-exporter"
   copy:
-    src: "{{ lookup('env', GOPATH) }}/osquery_exporter"
+    src: "{{ lookup('env', 'GOPATH') }}/bin/osquery_exporter"
     dest: "/usr/local/bin/osquery_exporter"
     owner: "root"
     group: "root"
